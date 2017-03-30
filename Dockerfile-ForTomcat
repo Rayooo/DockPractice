@@ -1,0 +1,25 @@
+FROM hub.c.163.com/library/tomcat:8.0.42-jre8
+MAINTAINER Ray 123@qq.com
+
+
+RUN cp /etc/apt/sources.list /etc/apt/sources.list.bac && \
+    echo "deb http://mirrors.163.com/debian/ jessie main non-free contrib" > /etc/apt/sources.list && \
+    echo "deb http://mirrors.163.com/debian/ jessie-updates main non-free contrib" >> /etc/apt/sources.list && \
+    echo "deb http://mirrors.163.com/debian/ jessie-backports main non-free contrib" >> /etc/apt/sources.list && \
+    echo "deb-src http://mirrors.163.com/debian/ jessie main non-free contrib" >> /etc/apt/sources.list && \
+    echo "deb-src http://mirrors.163.com/debian/ jessie-updates main non-free contrib" >> /etc/apt/sources.list && \
+    echo "deb-src http://mirrors.163.com/debian/ jessie-backports main non-free contrib" >> /etc/apt/sources.list && \
+    echo "deb http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib" >> /etc/apt/sources.list && \
+    echo "deb-src http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib" >> /etc/apt/sources.list
+
+RUN apt-get update && \
+    apt-get install -y maven
+
+COPY . /usr/local/tomcat/webapps
+WORKDIR /usr/local/tomcat/webapps/jk-server-cms
+
+#RUN mvn dependency:resolve
+
+
+EXPOSE 8080
+CMD catalina.sh run
