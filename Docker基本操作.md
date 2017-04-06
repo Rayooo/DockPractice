@@ -6,7 +6,7 @@
 
 1.拉取镜像   $ docker pull hub.c.163.com/library/tomcat:latest   或者   docker pull hub.c.163.com/library/tomcat:8.0.42-jre8
 
-2.然后输入$ docker images 查看本地镜像（我拉了tomcat:8.0.42-jre8）
+2.然后输入$ docker images 查看本地镜像（我拉了tomcat:8.0.42-jre8）可以运行docker run -it <容器id> /bin/bash 进入交互式终端查看镜像内部信息
 
 3.将本地镜像跑起来  $ docker run -d -p 80:8080 hub.c.163.com/library/tomcat:8.0.42-jre8   （-d代表的是后台（daemon）运行， -p代表端口映射，将docker容器中的8080端口映射到本机80端口）
 
@@ -16,7 +16,7 @@
 | ------------ | ---------------------------------------- | ----------------- | ------------- | ------------ | -------- | --------------- |
 | 7bb129c2d687 | hub.c.163.com/library/tomcat:8.0.42-jre8 | "catalina.sh run" | 5 seconds ago | Up 2 seconds | 8080/tcp | hopeful_murdock |
 
-5.进入容器，查看这个镜像的一些状态 $ docker exec -ti 7bb129 /bin/bash   (格式是 docker exec -ti <container name> /bin/bash   -i代表interactive   -t代表tty)
+5.进入容器，查看这个镜像的一些状态 $ docker exec -it 7bb129 /bin/bash   (格式是 docker exec -ti <container name> /bin/bash   -i代表interactive   -t代表tty)
 
 6.查看Linux版本 $ cat /etc/*-release
 

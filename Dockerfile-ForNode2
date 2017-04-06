@@ -1,0 +1,16 @@
+FROM hub.c.163.com/library/node:latest
+MAINTAINER Ray 123@qq.com
+
+ENV LOCATION "/Temperature"
+
+RUN mkdir -p $LOCATION
+
+COPY . $LOCATION
+
+WORKDIR $LOCATION
+
+RUN npm install --registry https://registry.npm.taobao.org
+
+EXPOSE 7777
+
+CMD ["node","index.js"]
