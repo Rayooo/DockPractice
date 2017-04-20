@@ -14,7 +14,7 @@ RUN cp /etc/apt/sources.list /etc/apt/sources.list.bac && \
 RUN mkdir -p /ss && \
     apt-get update && \
     apt-get install -y --allow-unauthenticated python-pip && \
-	pip install shadowsocks -i https://pypi.douban.com/simple
+	pip install shadowsocks -i http://pypi.douban.com/simple
 
 COPY . /ss
 
