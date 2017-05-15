@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  node1:
+    build: node1/
+    ports: 
+      - "3001:3001"
+      - "3002:3001"
+  # node2:
+  #   build: node2/
+  #   ports:
+  #     - "3002:3002"
+  
+  nginx:
+    build: nginx/
+    ports:
+      - "8080:8080"
